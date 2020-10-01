@@ -18,6 +18,8 @@ Options:
                          NOTSET
   -d, --debug-trace      Print lots of debugging information (-D NOTSET)
 """
+
+
 from __future__ import print_function
 from argopt import argopt
 import logging
@@ -27,6 +29,8 @@ from tqdm import tqdm
 import pty
 import os
 import io
+
+
 __author__ = "Casper da Costa-Luis <casper.dcl@physics.org>"
 __licence__ = "MPLv2.0"
 __version__ = "0.2.1"
@@ -53,7 +57,8 @@ def main():
         # builtin test: last line should be total sizes
         log.debug(finfo)
         totals = map(int, finfo[-1][:2])
-        # log.debug(totals)
+       
+      # log.debug(totals)
         for s in range(2):  # size|compressed totals
             totals_s = sum(map(int, (inf[s] for inf in finfo[:-1])))
             if totals_s != totals[s]:
@@ -91,11 +96,13 @@ def main():
                         except IOError:
                             break
                         ln = l_raw.strip()
+                        
                         if ln.startswith("Extracting"):
                             exname = ln.lstrip("Extracting").lstrip()
                             s = fcomp.get(exname, 0)  # 0 is likely folders
                             t.update(s)
                             tall.update(s)
+                        
                         elif ln:
                             if not any(
                                     ln.startswith(i)
