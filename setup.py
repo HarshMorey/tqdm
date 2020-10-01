@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+
+# this try and except is for ignore the error which we know come after run the program... 
 try:
     from setuptools import setup, find_packages
 except ImportError:
